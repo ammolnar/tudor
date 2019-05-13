@@ -26,12 +26,12 @@ public class Szolgaltatas implements Serializable {
 	private int szolgid;
 	
 	@ManyToOne
-	@JoinColumn(name = "fk_esid", nullable = false)
+	@JoinColumn(name = "fk_kerdesid", nullable = false)
 	@JsonIgnore
-	private Eset eset;
+	private Kerdes kerdes;
 	
-	@Column(name = "fk_esid", insertable = false, updatable = false)
-	private int esetId;
+	@Column(name = "fk_kerdesid", insertable = false, updatable = false)
+	private int kerdesId;
 	
 	public enum Statusz{ NYITOTT, LEZART }
 	
@@ -49,8 +49,8 @@ public class Szolgaltatas implements Serializable {
 	public int getSzolgid() { return this.szolgid; }
 	public void setSzolgid(int szolgid) { this.szolgid = szolgid; }
 	
-	public Eset getEset() { return this.eset; }
-	public void setEset(Eset eset) { this.eset = eset; }
+	public Kerdes getKerdes() { return this.kerdes; }
+	public void setKerdes(Kerdes kerdes) { this.kerdes = kerdes; }
 	
 	public Statusz getStatusz() { return this.statusz; }
 	public void setStatusz(Statusz statusz) { this.statusz = statusz; }
@@ -76,7 +76,7 @@ public class Szolgaltatas implements Serializable {
 	public Date getVegdate() { return this.vegdate; }
 	public void setVegdate(Date vegdate) { this.vegdate = vegdate; }
 	
-	public int getEsetId() { return esetId; }
-	public void setEsetId(int esetId) { this.esetId = esetId; }
+	public int getKerdesId() { return kerdesId; }
+	public void setKerdesId(int kerdesId) { this.kerdesId = kerdesId; }
 
 }

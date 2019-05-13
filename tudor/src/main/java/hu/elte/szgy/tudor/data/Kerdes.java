@@ -21,13 +21,13 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="eset")
-public class Eset implements Serializable {
+@Table(name="kerdes")
+public class Kerdes implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int esid;
+	private int kerdesid;
 	
 	@ManyToOne
 	@JoinColumn(name="fk_azon", nullable = false)
@@ -37,7 +37,7 @@ public class Eset implements Serializable {
 	@Column(name = "fk_azon", insertable = false, updatable = false)
 	private int ugyfelAzon;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "eset")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "kerdes")
 	@JsonIgnore
 	private Set<Szolgaltatas> szolgaltatasok = new HashSet<Szolgaltatas>(0);
 	
@@ -57,8 +57,8 @@ public class Eset implements Serializable {
 	@Enumerated(EnumType.ORDINAL)
 	private ZarStat zarStat;
 	
-	public int getEsid() { return this.esid; }
-	public void setEsid(int esid) { this.esid = esid; }
+	public int getKerdesid() { return this.kerdesid; }
+	public void setKerdesid(int kerdesid) { this.kerdesid = kerdesid; }
 	
 	public Ugyfel getUgyfel() { return this.ugyfel; }
 	public void setUgyfel(Ugyfel ugyfel) { this.ugyfel = ugyfel; }
@@ -90,7 +90,7 @@ public class Eset implements Serializable {
     public int getUgyfelAzon()	{ return ugyfelAzon; }
 	public void setUgyfelAzon(int ugyfelAzon) { this.ugyfelAzon = ugyfelAzon; }
 	
-	public Eset() { }
-    public Eset(Integer nid) { esid = nid; }
+	public Kerdes() { }
+    public Kerdes(Integer nid) { kerdesid = nid; }
 
 }

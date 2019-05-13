@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface EsetRepository  extends JpaRepository<Eset, Integer> {
-	List<Eset> findEsetekByUgyfel(Ugyfel ugyfel);
+public interface KerdesRepository  extends JpaRepository<Kerdes, Integer> {
+	List<Kerdes> findKerdesekByUgyfel(Ugyfel ugyfel);
 
 }

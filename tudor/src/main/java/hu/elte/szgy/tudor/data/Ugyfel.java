@@ -29,7 +29,7 @@ public class Ugyfel implements Serializable {
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ugyfel")
 	@JsonIgnore
-	private Set<Eset> esetek = new HashSet<Eset>(0);
+	private Set<Kerdes> kerdesek = new HashSet<Kerdes>(0);
 	
 	public int getAzon() { return azon; }
 	public void setAzon(int azon) { this.azon = azon; }
@@ -43,16 +43,15 @@ public class Ugyfel implements Serializable {
 	public String getFoglalkozas() { return foglalkozas; }
 	public void setFoglalkozas(String foglalkozas) { this.foglalkozas = foglalkozas; }
 	
-	public Set<Eset> getEsetek() {
-		return this.getEsetek();
+	public Set<Kerdes> getKerdesek() {
+		return this.getKerdesek();
 	}
 	
-	public void setEsetek(Set<Eset> esetek) {
-		this.esetek = esetek;
+	public void setKerdesek(Set<Kerdes> kerdesek) {
+		this.kerdesek = kerdesek;
 	}
 	
 	public Ugyfel() {}
 	public Ugyfel(Integer azon) { this.azon = azon; }
-	
 
 }
