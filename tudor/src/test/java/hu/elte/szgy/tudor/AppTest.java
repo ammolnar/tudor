@@ -1,4 +1,4 @@
-package org.elte.szgy.tudor;
+package hu.elte.szgy.tudor;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
