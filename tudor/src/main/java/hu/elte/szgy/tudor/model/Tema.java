@@ -35,7 +35,7 @@ public class Tema implements Serializable {
 	public void setVezetoId(Integer vezetoId) { this.vezetoId = vezetoId; }
 
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "osztaly")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "tema")
     @JsonIgnore
     private Set<Tudor> tudorok = new HashSet<Tudor>(0);
     

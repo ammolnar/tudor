@@ -7,6 +7,8 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.Module;
 import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
@@ -16,6 +18,7 @@ import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
  *
  */
 @SpringBootApplication
+@RestController //for HelloWorld rest endpoint
 public class TudorApp //implements ApplicationRunner //egyelőre nem kell
 {
 	
@@ -25,6 +28,11 @@ public class TudorApp //implements ApplicationRunner //egyelőre nem kell
     {
         //System.out.println( "Hello World!" );
     	SpringApplication.run(TudorApp.class, args);
+    }
+    
+    @RequestMapping(value = "/")
+    public String hello() {
+    	return "Hello World";
     }
     
     /*@Override

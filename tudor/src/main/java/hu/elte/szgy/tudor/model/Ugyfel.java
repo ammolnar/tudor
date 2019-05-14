@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="ugyfel")
-@NamedQuery(name="Ugyfel.hasPendingSzolgaltatasBy", query="SELECT count(*) from Szolgaltatas sz WHERE sz.eset.ugyfel.azon=:azon")
+//@NamedQuery(name="Ugyfel.hasPendingSzolgaltatasBy", query="SELECT count(*) from szolgaltatas sz WHERE sz.kerdes.ugyfel.azon=:azon") //Errors in named queries: szolgaltatas is not mapped 
 public class Ugyfel implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
