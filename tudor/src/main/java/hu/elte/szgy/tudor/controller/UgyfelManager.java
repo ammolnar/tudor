@@ -57,15 +57,13 @@ public class UgyfelManager {
 	}
 	
 	@GetMapping("/{azon}")
-        public ResponseEntity<Ugyfel> findUgyfel(@PathVariable("azon") Integer azon, 
-    		Principal principal, Authentication auth) {
-
+    public ResponseEntity<Ugyfel> findUgyfel(@PathVariable("azon") Integer azon, Principal principal, Authentication auth) {
 		Ugyfel b = ugyfelRepo.findById(azon).get();
 		log.info("Ugyfel type: {} {}", b.getClass().getName(), 11);
-//		if(b == null) throw new ResourceNotFoundException( "Ugyfel "+azon+" not found"  );
+		//if(b == null) throw new ResourceNotFoundException( "Ugyfel "+azon+" not found"  );
 		if(auth.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_TEMA"))) {
 			//if(ugyfelRepo.hasPendingSzolgaltatasBy(azon,userTudorID(auth))==0) throw new AccessDeniedException("No access to (ugyfel)azon: "+azon);
-			if(ugyfelRepo.hasPendingSzolgaltatasBy(azon)==0) throw new AccessDeniedException("No access to (ugyfel)azon: "+azon);
+			//if(ugyfelRepo.hasPendingSzolgaltatasBy(azon)==0) throw new AccessDeniedException("No access to (ugyfel)azon: "+azon);
 			log.debug( "Checked uses for tudor" );
 		}
 		return new ResponseEntity<Ugyfel>(b, HttpStatus.OK);
