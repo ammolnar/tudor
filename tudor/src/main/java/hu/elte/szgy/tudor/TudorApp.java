@@ -18,24 +18,15 @@ import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
  *
  */
 @SpringBootApplication
-@RestController //for HelloWorld rest endpoint
 public class TudorApp
 {
-	
 	private static Logger log = LoggerFactory.getLogger(TudorApp.class);
 	
     public static void main( String[] args ) throws Exception
     {
-        //System.out.println( "Hello World!" );
     	SpringApplication.run(TudorApp.class, args);
     }
-    
-    @RequestMapping(value = "/")
-    public String hello() {
-    	return "Hello World";
-    }
-    
-        
+            
     /*
     @Bean
     public Module hibernate5Module() {

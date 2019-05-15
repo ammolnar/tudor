@@ -24,39 +24,20 @@ public class User implements Serializable {
 	
 	@Enumerated(EnumType.STRING)
 	private UserType type;
+	
 	private int userid;
 	
-	public String getUsername() {
-		return this.username;
-	}
+	public String getUsername() {return this.username;}
+	public void setUsername(String username) {this.username = username;}
 	
-	public void setUsername(String username) {
-		this.username = username;
-	}
+	public String getPassword() {return this.password;}
+	public void setPassword(String password) {this.password = password;}
 	
-	public String getPassword() {
-		return this.password;
-	}
+	public UserType getType() {return this.type;}
+	public void setType(UserType type) {this.type = type;}
 	
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	
-	public UserType getType() {
-		return this.type;
-	}
-	
-	public void setType(UserType type) {
-		this.type = type;
-	}
-	
-	public int getUserid() {
-		return this.userid;
-	}
-	
-	public void setUserid(int userid) {
-		this.userid = userid;
-	}
+	public int getUserid() {return this.userid;}
+	public void setUserid(int userid) {this.userid = userid;}
 
 }
 

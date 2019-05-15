@@ -43,6 +43,13 @@ public class UserServiceController {
 	}
 	
 	
+	@PostMapping("/dispatch")
+	public ResponseEntity<Void> dispatchUser() {
+		//return new ResponseEntity<Void>(headers, HttpStatus.FOUND);
+		return new ResponseEntity<Void>(userService.dispatchUser(), HttpStatus.FOUND);
+	}
+	
+	
 	/*
 	private static Logger log = LoggerFactory.getLogger(UserServiceController.class);
 	

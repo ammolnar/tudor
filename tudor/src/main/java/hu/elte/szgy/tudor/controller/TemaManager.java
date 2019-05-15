@@ -77,7 +77,7 @@ public class TemaManager {
     }
 
     @GetMapping("/tema/{temaid}/tudorok")
-    public ResponseEntity<List<Tudor>> getTUdorokByTema(@PathVariable("temaid") String tema_nev) {
+    public ResponseEntity<List<Tudor>> getTudorokByTema(@PathVariable("temaid") String tema_nev) {
     	Tema oszi = temaDao.getOne(tema_nev);
 		return new ResponseEntity<List<Tudor>>(tudorDao.findTudorByTema(oszi), HttpStatus.OK);
     }

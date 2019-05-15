@@ -22,9 +22,9 @@ public class TudorUserPrincipal implements UserDetails {
 		//assign role from usertype field: ROLE_UGYFEL, ROLE_TUDOR, etc.
 		auths.add(new SimpleGrantedAuthority("ROLE_" + user.getType().name()));
 		
-		if (user.getType() != UserType.UGYFEL) {
+		/*if (user.getType() != UserType.UGYFEL) {
 			auths.add(new SimpleGrantedAuthority("ROLE_DOLGOZO"));
-		}
+		}*/
 	}
 	
 	public java.util.Collection<? extends GrantedAuthority> getAuthorities() { return auths; }  

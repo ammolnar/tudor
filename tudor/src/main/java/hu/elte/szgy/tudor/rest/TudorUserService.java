@@ -21,7 +21,7 @@ public class TudorUserService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) {
 		logger.info("Authenticating " + username);
 		User user = userRepository.findById(username).get();
-		logger.info("User data " + user.getPassword() + " " + user.getType());
+		logger.info("User data:" + user.getPassword() + ", " + user.getType());
 		return new TudorUserPrincipal(user);
 	}
 }

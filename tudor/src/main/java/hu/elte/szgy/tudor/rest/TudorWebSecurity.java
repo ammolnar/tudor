@@ -1,8 +1,10 @@
 package hu.elte.szgy.tudor.rest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -43,29 +45,42 @@ public class TudorWebSecurity extends WebSecurityConfigurerAdapter {
         .csrf().disable()
         .formLogin()
             .loginPage("/login")
-            .successForwardUrl( "/user/dispatch" )
+            //.successForwardUrl( "/user/dispatch" )
+            //.failureForwardUrl("/error")
             .permitAll()
             .and()
-        .logout()
+            .logout()
             .permitAll();
 		
 	}
+	
 	
 	@SuppressWarnings("deprecation")
 	@Bean
 	@Override
 	public UserDetailsService userDetailsService() {
 		// SIMPLE USERSERVICE TO BE USED FOR TESTING ONLY
+		/* There is no PasswordEncoder mapped for the id “null” -- solutions: 
+		 * https://www.mkyong.com/spring-boot/spring-security-there-is-no-passwordencoder-mapped-for-the-id-null/
+		 */
 		UserDetails user = 
 				User.withDefaultPasswordEncoder()
-					.username("user")
-					.password("password")
-					.roles("USER")
+					.username("usr")
+					.password("pwd")
+					.roles("ADMIN")
 					.build();
 		return new InMemoryUserDetailsManager(user); 
-		
-		
-		// return new TudorUserService();
+		//return new TudorUserService();
 	}
-
+	 
+	
+	/*
+	 * @Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+		//https://www.mkyong.com/spring-boot/spring-security-there-is-no-passwordencoder-mapped-for-the-id-null/
+		auth
+			.inMemoryAuthentication()
+			.withUser("usr").password("{noop}pwd").roles("ADMIN");
+	}
+	*/
 }
