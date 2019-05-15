@@ -1,4 +1,4 @@
-package hu.elte.szgy.tudor.service;
+package hu.elte.szgy.tudor.rest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

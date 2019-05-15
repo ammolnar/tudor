@@ -1,4 +1,4 @@
-package hu.elte.szgy.tudor.service;
+package hu.elte.szgy.tudor.rest;
 
 import java.util.ArrayList;
 import java.util.List;

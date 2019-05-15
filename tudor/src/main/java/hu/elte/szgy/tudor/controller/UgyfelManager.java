@@ -30,7 +30,7 @@ import hu.elte.szgy.tudor.model.Kerdes;
 import hu.elte.szgy.tudor.model.Szolgaltatas;
 import hu.elte.szgy.tudor.model.Tema;
 import hu.elte.szgy.tudor.model.Ugyfel;
-import hu.elte.szgy.tudor.service.TudorUserPrincipal;
+import hu.elte.szgy.tudor.rest.TudorUserPrincipal;
 
 @RestController
 @RequestMapping("ugyfel")
