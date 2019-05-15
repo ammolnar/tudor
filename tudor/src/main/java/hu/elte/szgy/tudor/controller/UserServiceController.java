@@ -28,12 +28,23 @@ import hu.elte.szgy.tudor.dao.UserRepository;
 import hu.elte.szgy.tudor.model.User;
 import hu.elte.szgy.tudor.model.User.UserType;
 import hu.elte.szgy.tudor.rest.PassDTO;
+import hu.elte.szgy.tudor.service.UserService;
 
 @RestController
 @RequestMapping("user")
 @Transactional
-public class UserManager {
-	private static Logger log = LoggerFactory.getLogger(UserManager.class);
+public class UserServiceController {
+	@Autowired
+	UserService userService;
+
+	@RequestMapping(value = "/users")
+	public ResponseEntity<Object> getUsers() {
+		return new ResponseEntity<>(userService.getUsers(), HttpStatus.OK);
+	}
+	
+	
+	/*
+	private static Logger log = LoggerFactory.getLogger(UserServiceController.class);
 	
 	@Autowired
 	private UserRepository userDao;
@@ -121,5 +132,5 @@ public class UserManager {
 		}
 		return new ResponseEntity<Void>(headers, HttpStatus.FOUND);
 	}
-
+	*/
 }
