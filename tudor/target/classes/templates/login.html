@@ -12,67 +12,78 @@
 
         <script type="text/javascript">
             Ext.onReady(function () {
-                var field, panel;
+                /*var field, panel;*/
                 
                 var loginpanel = Ext.create('Ext.form.Panel', {
                     region: 'center',
                     title: 'Bejelentkező panel',
                     standardSubmit:true, 
-                    width: 350,
-                    height: 350,
+                    /*border: true,*/
+                    /*width: 200,
+                    height: 100,*/
                     url: '/login',
-                    items: [{
-                        xtype: 'textfield',
-                        fieldLabel: 'Felhasználó név',
-                        name: 'username'
-                    },
-                    {
-                        xtype: 'textfield',
-                        inputType: 'password',
-                        fieldLabel: 'Jelszó',
-                        name: 'password'
-                    }],
-                    buttons: [
-                        { text: "Login", 
+                    items: [
+                        {
+                            xtype: 'textfield',
+                            fieldLabel: 'Felhasználó név',
+                            name: 'username'
+                        }
+                        ,{
+                            xtype: 'textfield',
+                            inputType: 'password',
+                            fieldLabel: 'Jelszó',
+                            name: 'password'
+                        }
+                    ]
+                    , buttons: [
+                        { 
+                            text: "Login", 
                             handler: function() { 
                                 var form = this.up('form').getForm();
                                 form.submit({
                                     success: function(form, action) {
-                                        Ext.Msg.alert('Success', action.result.msg);
+                                            Ext.Msg.alert('Success', action.result.msg);
                                         },
                                         failure: function(form, action) {
                                             Ext.Msg.alert('Failed', action.result.msg);
                                         }
                                 }) 
                             } 
-                        },
-                        { text: "Reset", 
+                        }
+                        , { 
+                            text: "Reset", 
                             handler: function() { this.up('form').getForm().reset(); } 
                         }
                     ]
                 });
+
                 Ext.create('Ext.panel.Panel', {
                     renderTo: "maindiv",
-                    width: 1000,
-                    height:500,
+                    width: 600,
+                    height: 400,
+                    border: true,
                     layout: 'border', 
                     items: [
-                        { region:'west', width: 140, 
+                        { 
+                            region:'west',  
                             layout: {
                                 type:'vbox',
                                 pack:'center'
                             },
                             items: [{
                             xtype: 'image',
-                            src: 'images/customer_service2.png',
+                            src: 'images/customer_service1.png',
                             shrinkWrap: true,
                             alt: 'customer service agent',
-                            width:140,
-                            height:400
+                            width:240,
+                            height:314
                             }]	
-                        },
-                        loginpanel,
-                        { region:'east', width: 140}
+                        }
+                        , loginpanel
+                        /*, { 
+                            region:'east' 
+                            , width: 240
+                        }*/
                     ]
                 }).center();
             });
