@@ -19,7 +19,7 @@ import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
  */
 @SpringBootApplication
 @RestController //for HelloWorld rest endpoint
-public class TudorApp //implements ApplicationRunner //egyelőre nem kell
+public class TudorApp
 {
 	
 	private static Logger log = LoggerFactory.getLogger(TudorApp.class);
@@ -35,11 +35,7 @@ public class TudorApp //implements ApplicationRunner //egyelőre nem kell
     	return "Hello World";
     }
     
-    /*@Override
-    public void run(ApplicationArguments arg0) throws Exception {
-    	System.out.println("Hello world from application runner!");
-    }*/
-    
+        
     /*
     @Bean
     public Module hibernate5Module() {
