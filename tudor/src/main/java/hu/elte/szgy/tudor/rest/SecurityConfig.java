@@ -68,6 +68,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         	.antMatchers("/css/**", "/js/**", "/images/**").permitAll()
         	.antMatchers("/", "/home", "/hello").authenticated()
         	.antMatchers("/admin_home").hasRole("ADMIN")
+        	
+        	
 //            .antMatchers(HttpMethod.GET,"/","/extjs/**").permitAll()
 //            .antMatchers(HttpMethod.GET,"/beteg/self").hasRole("BETEG")
 //            .antMatchers(HttpMethod.GET,"/beteg/*", "beteg/kezeles/*").hasRole("DOLGOZO")
