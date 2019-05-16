@@ -48,8 +48,8 @@ public class UserServiceController {
 	
 	//@PostMapping("/dispatch")
 	@RequestMapping(value = "/dispatch", method = RequestMethod.POST)
-	public ResponseEntity<Void> dispatchUser() {
-	//public RedirectView dispatchUser() {
+	//public ResponseEntity<Void> dispatchUser() {
+	public RedirectView dispatchUser() {
 		//return new ResponseEntity<Void>(headers, HttpStatus.FOUND);
 		//return new ResponseEntity<Void>(userService.dispatchUser(), HttpStatus.FOUND);
 		return userService.dispatchUser();

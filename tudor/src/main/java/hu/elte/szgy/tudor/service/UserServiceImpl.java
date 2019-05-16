@@ -13,6 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.view.RedirectView;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import hu.elte.szgy.tudor.dao.UserRepository;
@@ -40,7 +41,7 @@ public class UserServiceImpl {
 		return new ResponseEntity<>(userDao.findAll(), HttpStatus.OK);
 	}
 
-	public ResponseEntity<Void> dispatchUser() {
+	public RedirectView dispatchUser() {
 		SecurityContext cc = SecurityContextHolder.getContext();
 		HttpHeaders headers = new HttpHeaders();
 		if (cc.getAuthentication() != null) {
@@ -49,8 +50,8 @@ public class UserServiceImpl {
 			System.out.println("Name: "+a.getName());
 			System.out.println(", type: "+userDao.getOne(a.getName()).getType());
 			
-			//headers.add("Location", "/" + userDao.getOne(a.getName()).getType().toString().toLowerCase() + "_home.html");
-			try {
+			headers.add("Location", "/" + userDao.getOne(a.getName()).getType().toString().toLowerCase() + "_home.html");
+			/*try {
 				headers.setLocation(
 						new URI("/" + userDao.getOne(a.getName()).getType().toString().toLowerCase() + "_home.html")
 						//new URI("redirect:" + userDao.getOne(a.getName()).getType().toString().toLowerCase() + "_home.html")
@@ -58,11 +59,12 @@ public class UserServiceImpl {
 				 headers.add("Location", "/" + userDao.getOne(a.getName()).getType().toString().toLowerCase() + "_home.html");
 			} catch (URISyntaxException e) {
 				log.warn("Dispatcher cannot redirect");
-			}
+			}*/
 			
 		}
-		return new ResponseEntity<Void>(headers, HttpStatus.FOUND);
+		//return new ResponseEntity<Void>(headers, HttpStatus.FOUND);
 		//return new ResponseEntity<Void>(headers, HttpStatus.TEMPORARY_REDIRECT);
+		return new RedirectView("/ugyfel_home", true);
 	}
 	
 }
