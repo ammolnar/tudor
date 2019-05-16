@@ -14,12 +14,13 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @Configuration
 @EnableWebSecurity
-public class TudorWebSecurity extends WebSecurityConfigurerAdapter {
-	@Autowired
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+	/*@Autowired
 	private DataSource dataSource;
 	
 	@Value("{spring.queries.users-query}")
@@ -27,7 +28,6 @@ public class TudorWebSecurity extends WebSecurityConfigurerAdapter {
 	
 	@Value("{spring.queries.roles-query}")
 	private String rolesQuery;
-	
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -37,6 +37,17 @@ public class TudorWebSecurity extends WebSecurityConfigurerAdapter {
 			.authoritiesByUsernameQuery(rolesQuery)
 			.dataSource(dataSource);
 
+	}*/
+	
+	
+	
+	@Autowired
+	UserDetailsService userDetailsService;
+	
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(userDetailsService)
+			.passwordEncoder(getPasswordEncoder());
 	}
 	
 	
@@ -59,7 +70,8 @@ public class TudorWebSecurity extends WebSecurityConfigurerAdapter {
         	//.antMatchers(HttpMethod.GET,"/","/static/images/**").permitAll()
         	//.antMatchers("/static/images/*").permitAll()
         	//.antMatchers("/css/**", "/js/**", "/images/**").permitAll()
-        	
+
+        	.antMatchers("/hello").hasRole("ADMIN")
 //            .antMatchers(HttpMethod.GET,"/","/extjs/**").permitAll()
 //            .antMatchers(HttpMethod.GET,"/beteg/self").hasRole("BETEG")
 //            .antMatchers(HttpMethod.GET,"/beteg/*", "beteg/kezeles/*").hasRole("DOLGOZO")
@@ -111,5 +123,19 @@ public class TudorWebSecurity extends WebSecurityConfigurerAdapter {
 		//return new TudorUserService();
 	}
 	*/
+	
+	private PasswordEncoder getPasswordEncoder() {
+		return new PasswordEncoder() {
+			@Override
+			public String encode(CharSequence charSequence) {
+				return charSequence.toString();
+			}
+			
+			@Override
+			public boolean matches(CharSequence charSequence, String s) {
+				return true;
+			}
+		};
+	}
 	
 }
