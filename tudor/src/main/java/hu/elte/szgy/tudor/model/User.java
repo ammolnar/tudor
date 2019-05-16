@@ -33,6 +33,7 @@ public class User implements Serializable {
 	@Column(name="userid")
 	private int userid;
 	
+	
 	public String getUsername() {return this.username;}
 	public void setUsername(String username) {this.username = username;}
 	
