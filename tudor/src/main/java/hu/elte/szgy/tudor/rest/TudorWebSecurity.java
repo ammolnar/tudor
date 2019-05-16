@@ -1,6 +1,9 @@
 package hu.elte.szgy.tudor.rest;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -16,13 +19,43 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @Configuration
 @EnableWebSecurity
 public class TudorWebSecurity extends WebSecurityConfigurerAdapter {
+	@Autowired
+	private DataSource dataSource;
+	
+	@Value("{spring.queries.users-query}")
+	private String usersQuery;
+	
+	@Value("{spring.queries.roles-query}")
+	private String rolesQuery;
+	
+	
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth
+			.jdbcAuthentication()
+			.usersByUsernameQuery(usersQuery)
+			.authoritiesByUsernameQuery(rolesQuery)
+			.dataSource(dataSource);
+
+	}
+	
+	
+	/*@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+		//https://www.mkyong.com/spring-boot/spring-security-there-is-no-passwordencoder-mapped-for-the-id-null/
+		auth
+			.inMemoryAuthentication()
+			.withUser("usr").password("{noop}pwd").roles("ADMIN");
+	}*/
+	
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		
 		http
         .authorizeRequests()
-    		//.antMatchers(HttpMethod.GET,"/**").permitAll()
         	.antMatchers("/", "/home", "/css/**", "/js/**", "/images/**").permitAll()
+        	//.antMatchers(HttpMethod.GET,"/**").permitAll()
         	//.antMatchers(HttpMethod.GET,"/","/static/images/**").permitAll()
         	//.antMatchers("/static/images/*").permitAll()
         	//.antMatchers("/css/**", "/js/**", "/images/**").permitAll()
@@ -78,14 +111,5 @@ public class TudorWebSecurity extends WebSecurityConfigurerAdapter {
 		//return new TudorUserService();
 	}
 	*/
-	
-	
-	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		//https://www.mkyong.com/spring-boot/spring-security-there-is-no-passwordencoder-mapped-for-the-id-null/
-		auth
-			.inMemoryAuthentication()
-			.withUser("usr").password("{noop}pwd").roles("ADMIN");
-	}
 	
 }

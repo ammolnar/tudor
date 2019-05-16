@@ -1,4 +1,4 @@
-package hu.elte.szgy.tudor.rest;
+package hu.elte.szgy.tudor.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,12 +11,12 @@ import hu.elte.szgy.tudor.model.User;
 import hu.elte.szgy.tudor.model.User.UserType;
 
 
-public class TudorUserPrincipal implements UserDetails {
+public class UserDetailsImpl implements UserDetails {
 	private static final long serialVersionUID = 1L;
 	private User user;
 	private List<GrantedAuthority> auths = new ArrayList<GrantedAuthority>(5);
 	
-	public TudorUserPrincipal(User user) {
+	public UserDetailsImpl(User user) {
 		this.user = user;
 		
 		//assign role from usertype field: ROLE_UGYFEL, ROLE_TUDOR, etc.

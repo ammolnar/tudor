@@ -2,6 +2,7 @@ package hu.elte.szgy.tudor.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -15,7 +16,10 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@Column(name="username")
 	private String username;
+	
+	@Column(name="password")
 	private String password;
 	
 	public enum UserType {
@@ -23,8 +27,10 @@ public class User implements Serializable {
 	}
 	
 	@Enumerated(EnumType.STRING)
+	@Column(name="type")
 	private UserType type;
 	
+	@Column(name="userid")
 	private int userid;
 	
 	public String getUsername() {return this.username;}

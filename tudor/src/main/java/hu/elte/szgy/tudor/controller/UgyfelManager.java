@@ -30,7 +30,7 @@ import hu.elte.szgy.tudor.model.Kerdes;
 import hu.elte.szgy.tudor.model.Szolgaltatas;
 import hu.elte.szgy.tudor.model.Tema;
 import hu.elte.szgy.tudor.model.Ugyfel;
-import hu.elte.szgy.tudor.rest.TudorUserPrincipal;
+import hu.elte.szgy.tudor.service.UserDetailsImpl;
 
 @RestController
 @RequestMapping("ugyfel")
@@ -48,7 +48,7 @@ public class UgyfelManager {
 	private TemaRepository temaRepo;
 
 	int userTudorID(Authentication auth) {
-		return ((TudorUserPrincipal)auth.getPrincipal()).getTudorId();
+		return ((UserDetailsImpl)auth.getPrincipal()).getTudorId();
 	}
 	
 	@GetMapping("/self")

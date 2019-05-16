@@ -35,7 +35,7 @@ import hu.elte.szgy.tudor.service.UserService;
 @Transactional
 public class UserServiceController {
 	@Autowired
-	UserService userService;
+	private UserService userService;
 
 	@RequestMapping(value = "/users")
 	public ResponseEntity<Object> getUsers() {

@@ -100,7 +100,8 @@
         <div th:if = "${param.logout}">
             You have been logged out.
         </div>
-        
+
+        <!--<img th:src="@{/images/customer_service1.png}" />-->        
         <form th:action = "@{/login}" method = "post">
             <div>
                 <label> User Name : <input type = "text" name = "username"/> </label>
