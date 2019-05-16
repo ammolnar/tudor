@@ -21,7 +21,12 @@ public class TudorWebSecurity extends WebSecurityConfigurerAdapter {
 		
 		http
         .authorizeRequests()
-    		.antMatchers(HttpMethod.GET,"/**").permitAll()
+    		//.antMatchers(HttpMethod.GET,"/**").permitAll()
+        	.antMatchers("/", "/home", "/css/**", "/js/**", "/images/**").permitAll()
+        	//.antMatchers(HttpMethod.GET,"/","/static/images/**").permitAll()
+        	//.antMatchers("/static/images/*").permitAll()
+        	//.antMatchers("/css/**", "/js/**", "/images/**").permitAll()
+        	
 //            .antMatchers(HttpMethod.GET,"/","/extjs/**").permitAll()
 //            .antMatchers(HttpMethod.GET,"/beteg/self").hasRole("BETEG")
 //            .antMatchers(HttpMethod.GET,"/beteg/*", "beteg/kezeles/*").hasRole("DOLGOZO")
@@ -41,28 +46,28 @@ public class TudorWebSecurity extends WebSecurityConfigurerAdapter {
 //            .antMatchers(HttpMethod.POST,"/user/password").authenticated()
 //            .antMatchers(HttpMethod.POST,"/user/password/*").hasAnyRole("ADMIN", "RECEPCIO")
 //            .antMatchers(HttpMethod.POST,"/user/delete/*").hasAnyRole("ADMIN", "RECEPCIO")
-            .and()
+        	.anyRequest().authenticated()
+        	.and()
         .csrf().disable()
         .formLogin()
-            .loginPage("/login")
-            //.successForwardUrl( "/user/dispatch" )
-            //.failureForwardUrl("/error")
-            .permitAll()
-            .and()
-            .logout()
-            .permitAll();
+        	.loginPage("/login")
+        	//.successForwardUrl( "/user/dispatch" )
+        	//.failureForwardUrl("/error")
+        	.permitAll()
+        	.and()
+        .logout()
+        	.permitAll();
 		
 	}
 	
-	
+	/*
 	@SuppressWarnings("deprecation")
 	@Bean
 	@Override
 	public UserDetailsService userDetailsService() {
 		// SIMPLE USERSERVICE TO BE USED FOR TESTING ONLY
-		/* There is no PasswordEncoder mapped for the id “null” -- solutions: 
-		 * https://www.mkyong.com/spring-boot/spring-security-there-is-no-passwordencoder-mapped-for-the-id-null/
-		 */
+		// There is no PasswordEncoder mapped for the id “null” -- solutions: 
+		 // https://www.mkyong.com/spring-boot/spring-security-there-is-no-passwordencoder-mapped-for-the-id-null/
 		UserDetails user = 
 				User.withDefaultPasswordEncoder()
 					.username("usr")
@@ -72,15 +77,15 @@ public class TudorWebSecurity extends WebSecurityConfigurerAdapter {
 		return new InMemoryUserDetailsManager(user); 
 		//return new TudorUserService();
 	}
-	 
+	*/
 	
-	/*
-	 * @Autowired
+	
+	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		//https://www.mkyong.com/spring-boot/spring-security-there-is-no-passwordencoder-mapped-for-the-id-null/
 		auth
 			.inMemoryAuthentication()
 			.withUser("usr").password("{noop}pwd").roles("ADMIN");
 	}
-	*/
+	
 }

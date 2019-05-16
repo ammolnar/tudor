@@ -6,6 +6,8 @@
     <head>
         <meta charset="utf-8"/>
         <title>TUDOR - Bejelentkező felület</title>
+
+        <!--
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/classic/theme-neptune/resources/theme-neptune-all.css">
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/ext-all-debug.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/classic/theme-neptune/theme-neptune.js"></script>
@@ -88,8 +90,27 @@
                 }).center();
             });
         </script>
+        -->
     </head>
     <body>
-        <div id="maindiv" style="height: 500px"/>
+        <!--<div id="maindiv" style="height: 500px" /> -->
+        <div th:if = "${param.error}">
+            Invalid username and password.
+        </div>
+        <div th:if = "${param.logout}">
+            You have been logged out.
+        </div>
+        
+        <form th:action = "@{/login}" method = "post">
+            <div>
+                <label> User Name : <input type = "text" name = "username"/> </label>
+            </div>
+            <div>
+                <label> Password: <input type = "password" name = "password"/> </label>
+            </div>
+            <div>
+                <input type = "submit" value = "Sign In"/>
+            </div>
+        </form>
     </body>
 </html>
