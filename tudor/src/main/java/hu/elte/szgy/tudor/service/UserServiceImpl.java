@@ -16,8 +16,9 @@ import org.slf4j.LoggerFactory;
 import hu.elte.szgy.tudor.dao.UserRepository;
 import hu.elte.szgy.tudor.model.User;
 
+
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl {
 	private UserRepository userDao;
 	
 	private static final Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
@@ -33,12 +34,10 @@ public class UserServiceImpl implements UserService {
 		return userDao.findByUsername(username);
 	}
 	
-	@Override
 	public Collection<User> getUsers() {
 		return userDao.findAll();
 	}
 
-	@Override
 	public HttpHeaders dispatchUser() {
 		SecurityContext cc = SecurityContextHolder.getContext();
 		HttpHeaders headers = new HttpHeaders();

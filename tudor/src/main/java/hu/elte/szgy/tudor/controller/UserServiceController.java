@@ -28,14 +28,14 @@ import hu.elte.szgy.tudor.dao.UserRepository;
 import hu.elte.szgy.tudor.model.User;
 import hu.elte.szgy.tudor.model.User.UserType;
 import hu.elte.szgy.tudor.rest.PassDTO;
-import hu.elte.szgy.tudor.service.UserService;
+import hu.elte.szgy.tudor.service.UserServiceImpl;
 
 @RestController
 @RequestMapping("user")
 @Transactional
 public class UserServiceController {
 	@Autowired
-	private UserService userService;
+	private UserServiceImpl userService;
 
 	@RequestMapping(value = "/users")
 	public ResponseEntity<Object> getUsers() {
