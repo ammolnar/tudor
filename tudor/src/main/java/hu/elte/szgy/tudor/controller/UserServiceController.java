@@ -22,7 +22,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 
 import hu.elte.szgy.tudor.dao.UserRepository;
 import hu.elte.szgy.tudor.model.User;
@@ -39,16 +41,20 @@ public class UserServiceController {
 
 	@RequestMapping(value = "/users")
 	public ResponseEntity<Object> getUsers() {
-		return new ResponseEntity<>(userService.getUsers(), HttpStatus.OK);
+		//return new ResponseEntity<>(userService.getUsers(), HttpStatus.OK);
+		return userService.getUsers();
 	}
 	
 	
-	@PostMapping("/dispatch")
+	//@PostMapping("/dispatch")
+	@RequestMapping(value = "/dispatch", method = RequestMethod.POST)
 	public ResponseEntity<Void> dispatchUser() {
+	//public RedirectView dispatchUser() {
 		//return new ResponseEntity<Void>(headers, HttpStatus.FOUND);
-		return new ResponseEntity<Void>(userService.dispatchUser(), HttpStatus.FOUND);
+		//return new ResponseEntity<Void>(userService.dispatchUser(), HttpStatus.FOUND);
+		return userService.dispatchUser();
+		//return new RedirectView("/hello", true);
 	}
-	
 	
 	/*
 	private static Logger log = LoggerFactory.getLogger(UserServiceController.class);

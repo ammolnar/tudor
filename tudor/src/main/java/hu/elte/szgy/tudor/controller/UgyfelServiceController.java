@@ -35,8 +35,8 @@ import hu.elte.szgy.tudor.service.UserDetailsImpl;
 @RestController
 @RequestMapping("ugyfel")
 @Transactional
-public class UgyfelManager {
-	private static Logger log = LoggerFactory.getLogger(UgyfelManager.class);
+public class UgyfelServiceController {
+	private static Logger log = LoggerFactory.getLogger(UgyfelServiceController.class);
 
 	@Autowired
 	private UgyfelRepository ugyfelRepo;

@@ -23,7 +23,7 @@ public class User implements Serializable {
 	private String password;
 	
 	public enum UserType {
-		UGYFEL, TUDOR, ADMIN, RECEPCIO
+		UGYFEL, TUDOR, ADMIN
 	}
 	
 	@Enumerated(EnumType.STRING)

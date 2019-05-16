@@ -27,9 +27,9 @@ import hu.elte.szgy.tudor.model.Tudor;
 @RestController
 @RequestMapping("tema")
 @Transactional
-public class TemaManager {
+public class TemaServiceController {
 
-    private static Logger log = LoggerFactory.getLogger(UgyfelManager.class);
+    private static Logger log = LoggerFactory.getLogger(UgyfelServiceController.class);
     @Autowired
     private TemaRepository temaDao;
 
