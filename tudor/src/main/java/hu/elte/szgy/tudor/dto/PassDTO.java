@@ -1,4 +1,4 @@
-package hu.elte.szgy.tudor.config;
+package hu.elte.szgy.tudor.dto;
 
 public class PassDTO {
 	public PassDTO() {}
