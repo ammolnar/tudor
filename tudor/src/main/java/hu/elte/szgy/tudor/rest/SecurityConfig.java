@@ -66,10 +66,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http
         .authorizeRequests()
         	.antMatchers("/", "/home", "/css/**", "/js/**", "/images/**").permitAll()
-        	//.antMatchers(HttpMethod.GET,"/**").permitAll()
-        	//.antMatchers(HttpMethod.GET,"/","/static/images/**").permitAll()
-        	//.antMatchers("/static/images/*").permitAll()
-        	//.antMatchers("/css/**", "/js/**", "/images/**").permitAll()
+
 
         	.antMatchers("/hello").hasRole("ADMIN")
 //            .antMatchers(HttpMethod.GET,"/","/extjs/**").permitAll()
