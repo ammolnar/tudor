@@ -1,4 +1,4 @@
-package hu.elte.szgy.tudor.rest;
+package hu.elte.szgy.tudor.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;

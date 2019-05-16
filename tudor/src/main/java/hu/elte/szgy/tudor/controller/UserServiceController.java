@@ -26,10 +26,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
+import hu.elte.szgy.tudor.config.PassDTO;
 import hu.elte.szgy.tudor.dao.UserRepository;
 import hu.elte.szgy.tudor.model.User;
 import hu.elte.szgy.tudor.model.User.UserType;
-import hu.elte.szgy.tudor.rest.PassDTO;
 import hu.elte.szgy.tudor.service.UserServiceImpl;
 
 @RestController
