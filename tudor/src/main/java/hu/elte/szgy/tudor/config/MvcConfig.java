@@ -35,6 +35,7 @@ public class MvcConfig implements WebMvcConfigurer {
 	
 	@Override
 	public void addResourceHandlers(final ResourceHandlerRegistry registry) {
+		// https://stackoverflow.com/questions/14861720/annotation-configuration-replacement-for-mvcresources-spring
 	    registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
 
