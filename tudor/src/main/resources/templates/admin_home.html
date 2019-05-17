@@ -23,7 +23,7 @@
                 $.each(result, function(key,value) {
                     //$("#usersJson").append(value.id+" "+value.name+" "+value.username+" ");
                     //$("#usersJson").append(value.username+" "+value.password+" "+value.type+" "+value.userid);
-                    $("#usersJson").append("<tr><td>"+value.username+"</td><td>"+value.password+"</td><td>"+value.type+"</td><td>"+value.userid+"</td></tr>");
+                    $("#usersJson").append("<tr><td>"+value.userid+"</td><td>"+value.username+"</td><td>"+value.password+"</td><td>"+value.type+"</td></tr>");
                     //$("#usersJson").append(data.username+" "+data.password+" "+data.type+" "+data.userid);
                 }); 
             });
@@ -45,22 +45,20 @@
     </head>
 
     <body>
-        TUDOR Admin felület
+        TudorApp - Admin felület
         <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
         
         <p>Click <a th:href="@{/user/users}">here</a> to see users json.</p>
+        <p>Click <a th:href="@{/user/add_user}">here</a> to create new user.</p>
 
-        <!--
-        <div id="usersJson"> </div>
-        -->
-
+        <!-- <div id="usersJson"> </div> -->
         
         <table id="usersJson">
             <tr>
+                <th>Userid</th>
                 <th>Username</th>
                 <th>Password</th>
                 <th>Type</th>
-                <th>Userid</th>
             </tr>
         </table>
         

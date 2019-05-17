@@ -48,7 +48,6 @@ public class UserServiceController {
 		return userService.getUsers();
 	}
 	
-	
 	//@PostMapping("/dispatch")
 	@RequestMapping(value = "/dispatch", method = RequestMethod.POST)
 	//public ResponseEntity<Void> dispatchUser() {
@@ -58,6 +57,25 @@ public class UserServiceController {
 		return userService.dispatchUser();
 		//return new RedirectView("/hello", true);
 	}
+	
+	//@PostMapping("/new")
+	@RequestMapping(value = "/users", method = RequestMethod.POST)
+	//public ResponseEntity<Object> createUser(@RequestBody(required = false) User u, Authentication a) {
+	public ResponseEntity<Void> createUser(@RequestBody(required = false) User u) {
+		//userService.createUser(u, a);
+		//userService.createUser(u);
+		return userService.createUser(u);
+		//return new ResponseEntity<>("User is created successfully", HttpStatus.CREATED);
+	}
+	
+	/*
+	//@RequestMapping("/add_user", method = RequestMethod.GET)
+	@RequestMapping("/add_user")
+	//public ResponseEntity<Void> addUser() {
+	public String addUser() {
+		return "add_user";
+	}
+	*/
 	
 	/*
 	private static Logger log = LoggerFactory.getLogger(UserServiceController.class);

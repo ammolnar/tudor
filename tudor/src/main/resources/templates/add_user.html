@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html 
+    xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    
+    <head>
+        <meta charset="utf-8" />
+        <title>TudorApp - ADMIN felület</title>
+        <link rel="stylesheet" type="text/css" src="css/styles.css" />
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <script>
+        $(document).ready(function(){
+            $.getJSON("http://localhost:9090/user/users", function(result){
+                $.each(result, function(key,value) {
+                    $("#usersJson").append("<tr><td>"+value.userid+"</td><td>"+value.username+"</td><td>"+value.password+"</td><td>"+value.type+"</td></tr>");
+                }); 
+            });
+        });
+        </script>
+
+
+        
+        <script>
+         $(document).ready(function() {
+            $("button").click(function() {
+               var usermodel = {
+                    userid : null,
+                    username : $("#username").val(), 
+                    password : $("#password").val(),
+                    type : $("#type").val()
+               };
+               /*alert("username:"+usermodel.username);
+               alert("password:"+usermodel.password);
+               alert("type:"+usermodel.type);*/
+               var requestJSON = JSON.stringify(usermodel);
+               $.ajax({
+                  type : "POST",
+                  //url : "http://localhost:9090/user/new",
+                  url : "http://localhost:9090/user/users",
+                  headers : {
+                     "Content-Type" : "application/json"
+                  },
+                  data : requestJSON,
+                  success : function(data) {
+                     alert(data);
+                  },
+                  error : function(data) {
+                  }
+               });
+            });
+         });
+      </script> 
+      
+                
+    </head>
+
+    <body>
+        TudorApp - Új felhasználó létrehozása
+        <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+        
+
+        <!-- <div id="usersJson"> </div> -->
+        
+        <table id="usersJson">
+            <tr>
+                <th>Userid</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Type</th>
+            </tr>
+        </table>
+        
+        <!--<form th:action = "@{/user/new}" method = "post">-->
+            <form th:action = "@{/user/users}" method = "post">
+            <div>
+                <label> User Name : <input type = "text" id="username"/> </label>
+            </div>
+            <div>
+                <label> Password: <input type = "password" id="password"/> </label>
+            </div>
+            <div>
+                <label> User role : <input type = "text" id="type"/> </label>
+            </div>
+
+            <div>
+                <!-- <input type = "submit" value = "Create"/> -->
+                <button>Click here to submit the form</button>
+            </div>
+        </form>
+
+        <p>Click <a th:href="@{/admin_home}">here</a> to go back to admin home.</p>
+
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+    </body>
+</html>

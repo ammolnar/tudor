@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -16,6 +18,10 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="userid")
+	private int userid;
+	
 	@Column(name="username")
 	private String username;
 	
@@ -30,9 +36,9 @@ public class User implements Serializable {
 	@Column(name="type")
 	private UserType type;
 	
-	@Column(name="userid")
-	private int userid;
 	
+	public int getUserid() {return this.userid;}
+	public void setUserid(int userid) {this.userid = userid;}
 	
 	public String getUsername() {return this.username;}
 	public void setUsername(String username) {this.username = username;}
@@ -43,8 +49,5 @@ public class User implements Serializable {
 	public UserType getType() {return this.type;}
 	public void setType(UserType type) {this.type = type;}
 	
-	public int getUserid() {return this.userid;}
-	public void setUserid(int userid) {this.userid = userid;}
-
 }
 
