@@ -9,8 +9,13 @@
     </head>
     <body>
         <h1>Welcome!</h1>
-        
-        <p>Click <a th:href="@{/hello}">here</a> to see a greeting.</p>
+        <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+
+        <p>Click <a th:href="@{/hello}">here</a> to see a different greeting.</p>
         <p>Click <a th:href="@{/ugyfel_home}">here</a> to see ugyfel_home.</p>
+
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
     </body>
 </html>

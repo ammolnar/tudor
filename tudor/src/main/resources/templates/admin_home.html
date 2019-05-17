@@ -15,6 +15,26 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.2.0/classic/theme-neptune/theme-neptune.js"></script>
         -->
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <script type="text/javascript">
+        $(document).ready(function(){
+            $.getJSON("http://localhost:9090/user/users", function(result){
+                $.each(result, function(key,value) {
+                    //$("#usersJson").append(value.id+" "+value.name+" "+value.username+" ");
+                    $("#usersJson").append(value.username+" "+value.password+" "+value.type+" "+value.userid+"<br />");
+                    //$("#usersJson").append(data.username+" "+data.password+" "+data.type+" "+data.userid);
+                }); 
+            });
+            $.ajax({
+                url: "http://localhost:9090/user/users"
+            }).then(function(data) {
+                $('#usersJson').append(data.id);
+                $('#usersJson').append(data.name);
+            });
+        });
+        </script>
+
         <script type="text/javascript">
 			/*function ajaxExceptionHandler(proxy, response, operation) {
 				if (response.responseText.includes('loginpanel')) {
@@ -216,5 +236,14 @@
 
     <body>
         TUDOR Admin felület
+        <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+        
+        <p>Click <a th:href="@{/user/users}">here</a> to see users json.</p>
+
+        <div id="usersJson"> </div>
+
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
     </body>
 </html>

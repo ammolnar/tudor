@@ -70,6 +70,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         	.antMatchers("/admin_home").hasRole("ADMIN")
         	.antMatchers("/ugyfel_home").hasRole("UGYFEL")
         	.antMatchers("/tudor_home").hasRole("TUDOR")
+        	//.antMatchers("/users").hasRole("ADMIN")
+        	.antMatchers("/users","/users/**","/user/**").permitAll()
         	
 //            .antMatchers(HttpMethod.GET,"/","/extjs/**").permitAll()
 //            .antMatchers(HttpMethod.GET,"/beteg/self").hasRole("BETEG")

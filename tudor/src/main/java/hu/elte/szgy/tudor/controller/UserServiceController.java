@@ -2,6 +2,7 @@ package hu.elte.szgy.tudor.controller;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 
 import javax.persistence.EntityExistsException;
 
@@ -40,7 +41,9 @@ public class UserServiceController {
 	private UserServiceImpl userService;
 
 	@RequestMapping(value = "/users")
-	public ResponseEntity<Object> getUsers() {
+	//public ResponseEntity<Object> getUsers() {
+	//public String getUsers() {
+	public List<User> getUsers() {
 		//return new ResponseEntity<>(userService.getUsers(), HttpStatus.OK);
 		return userService.getUsers();
 	}
