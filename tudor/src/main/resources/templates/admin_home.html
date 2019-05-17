@@ -17,219 +17,29 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-        <script type="text/javascript">
+        <script>
         $(document).ready(function(){
             $.getJSON("http://localhost:9090/user/users", function(result){
                 $.each(result, function(key,value) {
                     //$("#usersJson").append(value.id+" "+value.name+" "+value.username+" ");
-                    $("#usersJson").append(value.username+" "+value.password+" "+value.type+" "+value.userid+"<br />");
+                    //$("#usersJson").append(value.username+" "+value.password+" "+value.type+" "+value.userid);
+                    $("#usersJson").append("<tr><td>"+value.username+"</td><td>"+value.password+"</td><td>"+value.type+"</td><td>"+value.userid+"</td></tr>");
                     //$("#usersJson").append(data.username+" "+data.password+" "+data.type+" "+data.userid);
                 }); 
             });
+
+            /*
             $.ajax({
                 url: "http://localhost:9090/user/users"
             }).then(function(data) {
                 $('#usersJson').append(data.id);
                 $('#usersJson').append(data.name);
+                $("#usersJson").append(value.id+" "+value.name+" "+value.username+" ");
+                $("#usersJson").append(data.id+" "+data.name+" "+data.username+" ");
             });
-        });
-        </script>
-
-        <script type="text/javascript">
-			/*function ajaxExceptionHandler(proxy, response, operation) {
-				if (response.responseText.includes('loginpanel')) {
-					Ext.Msg.alert("Redirect to " + response.request.url);
-					window.location = response.request.url;
-				}
-				Ext.Msg.alert("Unknown error occurred: " + response.responseText);
-			}
-			
-			var formReader = {
-				read :	function(response) {
-					var result = { success: false , records: ["Decode error"]};
-					 try {
-						result.returnedObj = Ext.decode(response.responseText);
-						result.success = true;
-						result.records = null;
-					 } catch (e) { ;  };
-					 return result;
-				}
-			};
-		
-			Ext
-					.onReady(function() {
-						var field, panel;
-		
-						Ext.create('Ext.form.Label', {
-							renderTo : Ext.getBody(),
-							margin : 10,
-							padding : 20,
-							text : 'Tudor - Admin felület',
-							style : 'display:block;font-size: 24px;'
-						});
-		*/
-		// ============================== ORVOS ====================================                
-		/*
-						Ext.define('model.Orvos', {
-							extend : 'Ext.data.Model',
-							idProperty: 'elid',
-							fields : [ 'elid', 'nev', 'osztaly' ]
-						});
-		
-						Ext.define('store.Orvos', {
-							extend : 'Ext.data.Store',
-							model : 'model.Orvos',
-							proxy : {
-								type : 'ajax',
-								url : 'ellato/all?type=ORVOS',
-								listeners : {
-									exception : ajaxExceptionHandler
-								}
-							}
-						});
-		
-						var orvosok = Ext.create('store.Orvos');
-						orvosok.load();
-		
-						Ext.define('model.Osztaly', {
-							extend : 'Ext.data.Model',
-							idProperty: 'nev',
-							fields : [ 'nev', 'vezeto', 'ugyeletes' ]
-						});
-		
-						Ext.define('store.Osztaly', {
-							extend : 'Ext.data.Store',
-							model : 'model.Osztaly',
-							proxy : {
-								type : 'ajax',
-								url : 'ellato/osztaly/all',
-								listeners : {
-									exception : ajaxExceptionHandler
-								}
-							}
-						});
-		
-						var osztalyok = Ext.create('store.Osztaly');
-						osztalyok.load();
             */
-        		
-		// ================================== ORVOS panel ================================================				
-		/*				Ext.create('Ext.grid.Panel', {
-							renderTo : Ext.getBody(),
-							width : '1000px',
-							title : 'Orvosok listĂˇja',
-							store : orvosok,
-							
-							xxplugins : [ {
-								ptype : 'viewport'
-							} ],
-		
-							columns : [ {
-								text : 'ID',
-								dataIndex : 'elid',
-								flex : 1
-							}, {
-								text : 'NĂ©v',
-								dataIndex : 'nev',
-								editor: 'textfield',
-								flex : 1
-							}, {
-								text : 'OsztĂˇly',
-								dataIndex : 'osztalyId',
-								editor: {
-												xtype : 'combobox',
-												store : osztalyok,
-												forceSelection: true,
-												editable:false,
-												id : 'nev',
-												name : 'nev',
-												displayField : 'nev',
-												valueField : 'nev'
-											},
-								flex : 1
-							} ],
-							plugins: {
-		      					  ptype: 'rowediting',
-		        				  clicksToEdit: 1
-						    }
-						});
-		
-						Ext.create('Ext.Button', {
-							renderTo : Ext.getBody(),
-							margin : 10,
-							text : 'Ăšj orvos...',
-							handler : function() {
-								osztalyok.load();
-								Ext.create(Ext.form.Panel,{
-									title : 'Ăšj orvos',
-									height : 200,
-									width : 400,
-									bodyStyle : 'margin-top: 10px;',
-									floating : true,
-									layout : 'anchor',
-									defaults : {
-										anchor : '100%'
-									},
-									url : "ellato/orvos/new",
-									jsonSubmit : true,
-									items : [
-											{
-												xtype : 'textfield',
-												fieldLabel : 'NĂ©v',
-												name : 'nev'
-											},
-											{
-												xtype : 'textfield',
-												fieldLabel : 'Telefon',
-												name : 'telefon'
-											},
-											{
-												xtype : 'hidden',
-												value: 'ORVOS',
-												name: 'type'
-											},
-											{
-												xtype : 'combobox',
-												fieldLabel : 'OsztĂˇly',
-												store : osztalyok,
-												displayField : 'nev',
-												valueField : 'nev',
-												editable : false,
-												name : 'osztalyId'
-											} ],
-									dockedItems : [ {
-										xtype : 'toolbar',
-										dock : 'bottom',
-										items : [{
-													text : 'Submit',
-													handler : function() {
-														var formpanel = this.up('form'); // get the form panel
-														if (formpanel.isValid()) { // make sure the form contains valid data before submitting
-															formpanel.getForm().errorReader = formReader;
-															formpanel.submit({
-																success : function(form,action) {
-																	Ext.Msg.alert('Success',action.result.msg);
-																	orvosok.load();
-																	formpanel.destroy();
-																},
-																failure : function(form,action) {
-																	Ext.Msg.alert('Failed',action.result.msg);
-																	formpanel.destroy();
-																}
-															});
-														} else { // display error alert if the data is invalid
-															Ext.Msg.alert('Invalid Data','Please correct form errors.');
-														}
-													}
-												},{
-													text : 'Cancel',
-													handler : function() { this.up('form').destroy(); }
-												} ]
-									} ]
-								}).show();
-                            }*/
-                            
-					//	});
+            
+        });
         </script>
                 
     </head>
@@ -240,7 +50,20 @@
         
         <p>Click <a th:href="@{/user/users}">here</a> to see users json.</p>
 
+        <!--
         <div id="usersJson"> </div>
+        -->
+
+        
+        <table id="usersJson">
+            <tr>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Type</th>
+                <th>Userid</th>
+            </tr>
+        </table>
+        
 
         <form th:action="@{/logout}" method="post">
             <input type="submit" value="Sign Out"/>
