@@ -15,7 +15,8 @@
         $(document).ready(function(){
             $.getJSON("http://localhost:9090/user/users", function(result){
                 $.each(result, function(key,value) {
-                    $("#usersJson").append("<tr><td>"+value.userid+"</td><td>"+value.username+"</td><td>"+value.password+"</td><td>"+value.type+"</td></tr>");
+                    //$("#usersJson").append("<tr><td>"+value.userid+"</td><td>"+value.username+"</td><td>"+value.password+"</td><td>"+value.type+"</td></tr>");
+                    $("#usersJson").append("<tr><td>"+value.username+"</td><td>"+value.password+"</td><td>"+value.type+"</td></tr>");
                 }); 
             });
         });
@@ -27,7 +28,7 @@
          $(document).ready(function() {
             $("button").click(function() {
                var usermodel = {
-                    userid : null,
+                    //userid : null,
                     username : $("#username").val(), 
                     password : $("#password").val(),
                     type : $("#type").val()
@@ -66,7 +67,7 @@
         
         <table id="usersJson">
             <tr>
-                <th>Userid</th>
+                <!--<th>Userid</th>-->
                 <th>Username</th>
                 <th>Password</th>
                 <th>Type</th>

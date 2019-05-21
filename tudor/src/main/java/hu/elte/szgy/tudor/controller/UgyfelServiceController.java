@@ -47,14 +47,18 @@ public class UgyfelServiceController {
 	@Autowired
 	private TemaRepository temaRepo;
 
+	/*
 	int userTudorID(Authentication auth) {
 		return ((UserDetailsImpl)auth.getPrincipal()).getTudorId();
 	}
+	*/
 	
+	/*
 	@GetMapping("/self")
 	public ResponseEntity<Ugyfel> selfBeteg(Authentication auth) {
 		 return new ResponseEntity<Ugyfel>(ugyfelRepo.findById(userTudorID(auth)).get(), HttpStatus.OK);
 	}
+	*/
 	
 	@GetMapping("/{azon}")
     public ResponseEntity<Ugyfel> findUgyfel(@PathVariable("azon") Integer azon, Principal principal, Authentication auth) {

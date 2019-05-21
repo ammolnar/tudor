@@ -68,6 +68,14 @@ public class UserServiceController {
 		//return new ResponseEntity<>("User is created successfully", HttpStatus.CREATED);
 	}
 	
+	//@PostMapping("/delete/{userid}")
+	@RequestMapping(value = "/delete/{userid}", method = RequestMethod.GET)
+	//public ResponseEntity<Void> deleteUser(@PathVariable("userid") String username, Authentication a) {
+	public ResponseEntity<Void> deleteUser(@PathVariable("userid") String userid) {
+		//return new ResponseEntity<Void>(HttpStatus.ACCEPTED);
+		return userService.deleteUser(userid);
+	}
+	
 	/*
 	//@RequestMapping("/add_user", method = RequestMethod.GET)
 	@RequestMapping("/add_user")

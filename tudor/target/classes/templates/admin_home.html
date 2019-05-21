@@ -23,8 +23,10 @@
                 $.each(result, function(key,value) {
                     //$("#usersJson").append(value.id+" "+value.name+" "+value.username+" ");
                     //$("#usersJson").append(value.username+" "+value.password+" "+value.type+" "+value.userid);
-                    $("#usersJson").append("<tr><td>"+value.userid+"</td><td>"+value.username+"</td><td>"+value.password+"</td><td>"+value.type+"</td></tr>");
+                    
                     //$("#usersJson").append(data.username+" "+data.password+" "+data.type+" "+data.userid);
+                    //$("#usersJson").append("<tr><td>"+value.userid+"</td><td>"+value.username+"</td><td>"+value.password+"</td><td>"+value.type+"</td><td><a href=\"/user/delete"+"/"+value.userid+"\">delete</a></td></tr>");
+                    $("#usersJson").append("<tr><td>"+value.username+"</td><td>"+value.password+"</td><td>"+value.type+"</td><td><a href=\"/user/delete"+"/"+value.username+"\">delete</a></td></tr>");
                 }); 
             });
 
@@ -55,7 +57,7 @@
         
         <table id="usersJson">
             <tr>
-                <th>Userid</th>
+                <!--<th>Userid</th>-->
                 <th>Username</th>
                 <th>Password</th>
                 <th>Type</th>

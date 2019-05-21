@@ -31,7 +31,7 @@ public class UserDetailsImpl extends User implements UserDetails {
 	public java.util.Collection<? extends GrantedAuthority> getAuthorities() { return auths; }
 	public java.lang.String getUsername() { return user.getUsername(); }
 	public java.lang.String getPassword() { return user.getPassword(); }
-	public int getTudorId() { return user.getUserid(); }
+	//public int getTudorId() { return user.getUserid(); }
 
 	public boolean isEnabled() { return true; }
 	public boolean isCredentialsNonExpired() { return true; }

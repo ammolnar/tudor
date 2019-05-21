@@ -18,8 +18,10 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.view.RedirectView;
+import org.apache.tomcat.util.buf.C2BConverter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import hu.elte.szgy.tudor.dao.UserRepository;
@@ -69,8 +71,28 @@ public class UserServiceImpl {
 		    throw new EntityExistsException("Name already used");
 		}
 		userDao.save(u);
-		log.info("Creating user: " + u.getUserid());
+		//log.info("Creating user: " + u.getUserid());
+		log.info("Creating user: " + u.getUsername());
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
+	}
+	
+	//public ResponseEntity<Void> deleteUser(String userid) {
+	public ResponseEntity<Void> deleteUser(String username) {
+		//Object u = userDao.findById(userid);
+		//Object u = userDao.findByUsername(username);
+		User u = userDao.getOne(username);
+		/*if (!a.getAuthorities().contains("ROLE_ADMIN")
+			&& !(a.getAuthorities().contains("ROLE_RECEPCIO") && u.getType() == UserType.UGYFEL)) {
+		    throw new AccessDeniedException("Not authorized to delete");
+		}*/
+		//System.out.println("to be deleted:"+userid);
+		System.out.println("to be deleted:"+username);
+		userDao.delete(u);
+		
+		//userDao.deleteById(Integer.parseInt(userid));
+		//userDao.deleteById(userid);
+		//userDao.delete((User)u);
+		return new ResponseEntity<Void>(HttpStatus.ACCEPTED);
 	}
 	
 	
