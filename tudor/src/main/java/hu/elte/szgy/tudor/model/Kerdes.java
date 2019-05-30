@@ -52,9 +52,9 @@ public class Kerdes implements Serializable {
 	*/
 	
 	private String kerdes;
-	
 	private String valasz;
-	private int valaszstat;
+	
+	//private int valaszstat;
 	
 	/*
 	private Date nyitdate;
@@ -83,8 +83,10 @@ public class Kerdes implements Serializable {
 	public String getValasz() { return this.valasz; }
 	public void setValasz(String valasz) { this.valasz = valasz; }
 	
+	/*
 	public int getValaszstat() { return this.valaszstat; }
 	public void setValaszstat(int valaszstat) { this.valaszstat = valaszstat; }
+	*/
 	
 	/*
 	public Date getNyitdate() { return this.nyitdate; }
