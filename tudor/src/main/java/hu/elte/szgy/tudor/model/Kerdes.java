@@ -35,7 +35,7 @@ public class Kerdes implements Serializable {
 	private Ugyfel ugyfel;
 	
 	@Column(name = "fk_azon", insertable = false, updatable = false)
-	private int ugyfelAzon;
+	private String ugyfelAzon;
 		
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "kerdes")
 	@JsonIgnore
@@ -107,8 +107,8 @@ public class Kerdes implements Serializable {
     public Set<Szolgaltatas> getSzolgaltatasok() { return this.szolgaltatasok; }
     public void setKezelesek(Set<Szolgaltatas> szolgaltatasok) { this.szolgaltatasok = szolgaltatasok; }
 
-    public int getUgyfelAzon()	{ return ugyfelAzon; }
-	public void setUgyfelAzon(int ugyfelAzon) { this.ugyfelAzon = ugyfelAzon; }
+    public String getUgyfelAzon()	{ return ugyfelAzon; }
+	public void setUgyfelAzon(String ugyfelAzon) { this.ugyfelAzon = ugyfelAzon; }
     
 	public Kerdes() { }
     public Kerdes(Integer nid) { kerdesid = nid; }

@@ -22,7 +22,7 @@ public class Ugyfel implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	private int azon;
+	private String azon;
 	private String nev;
 	private Date szuldatum;
 	private String foglalkozas;
@@ -31,8 +31,8 @@ public class Ugyfel implements Serializable {
 	@JsonIgnore
 	private Set<Kerdes> kerdesek = new HashSet<Kerdes>(0);
 	
-	public int getAzon() { return azon; }
-	public void setAzon(int azon) { this.azon = azon; }
+	public String getAzon() { return azon; }
+	public void setAzon(String azon) { this.azon = azon; }
 	
 	public String getNev() { return nev; }
 	public void setNev(String nev) { this.nev = nev; }
@@ -52,6 +52,6 @@ public class Ugyfel implements Serializable {
 	}
 	
 	public Ugyfel() {}
-	public Ugyfel(Integer azon) { this.azon = azon; }
+	public Ugyfel(String azon) { this.azon = azon; }
 
 }

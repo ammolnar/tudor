@@ -6,7 +6,7 @@
     
     <head>
         <meta charset="utf-8" />
-        <title>TudorApp - Ă„â€šÄąâ€şGYFĂ„â€šĂ˘â‚¬Â°L felĂ„â€šĂ„Ëťlet</title>
+        <title>TudorApp - ÜGYFÉL felület</title>
         <link rel="stylesheet" type="text/css" src="css/styles.css" />
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -16,7 +16,9 @@
             $.getJSON("http://localhost:9090/ugyfel/kerdes/kerdesek", function(result){
                 $.each(result, function(key,value) {
                     //$("#usersJson").append("<tr><td>"+value.userid+"</td><td>"+value.username+"</td><td>"+value.password+"</td><td>"+value.type+"</td></tr>");
-                    $("#kerdesekJson").append("<tr><td>"+value.kerdes+"</td><td>"+value.kategoria+"</td><td>"+value.valasz+"</td></tr>");
+                    $("#kerdesekJson").append(
+                        "<tr><td>"+value.kerdesid+"</td><td>"+value.kerdes+"</td><td>"+value.kategoria+"</td><td>"+value.valasz+"</td></tr>"
+                    );
                 }); 
             });
         });
@@ -31,11 +33,10 @@
                     //kerdesid : null,
                     kerdes : $("#kerdes").val(), 
                     kategoria : $("#kategoria").val(),
-                    valasz : $("#valasz").val()
+                    ugyfelAzon : "1",
+                    //fk_azon : "1",
+                    valasz : ""
                };
-               /*alert("username:"+usermodel.username);
-               alert("password:"+usermodel.password);
-               alert("type:"+usermodel.type);*/
                var requestJSON = JSON.stringify(kerdesmodel);
                $.ajax({
                   type : "POST",
@@ -59,7 +60,7 @@
     </head>
 
     <body>
-        TudorApp - Ä‚Ĺ›GYFÄ‚â€°L felÄ‚Ä˝let
+        TudorApp - ÜGYFÉL felület
         <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
         
 
@@ -81,9 +82,6 @@
             </div>
             <div>
                 <label> Kategoria : <input type = "text" id="kategoria"/> </label>
-            </div>
-            <div>
-                <label> Valasz : <input type = "text" id="valasz"/> </label>
             </div>
 
             <div>

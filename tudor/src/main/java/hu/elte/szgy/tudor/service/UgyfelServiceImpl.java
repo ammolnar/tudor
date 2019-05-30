@@ -28,6 +28,7 @@ public class UgyfelServiceImpl {
 	}
 	
 	public ResponseEntity<Void> createKerdes(Kerdes k) {
+		System.out.println("creating:"+k.getKerdes()+","+k.getUgyfelAzon()+","+k.getKategoria()+","+k.getValasz());
 		kerdesDao.save(k);
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 	}

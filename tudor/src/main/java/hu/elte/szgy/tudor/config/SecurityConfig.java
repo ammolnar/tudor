@@ -70,7 +70,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         	.antMatchers("/admin_home").hasRole("ADMIN")
         	.antMatchers("/user/admin_home").hasRole("ADMIN")
         	.antMatchers("/ugyfel_home").hasRole("UGYFEL")
-        	.antMatchers("/ugyfel/kerdes/uj").hasRole("UGYFEL")
+        	.antMatchers("/ugyfel/uj_kerdes").hasRole("UGYFEL")
         	.antMatchers("/tudor_home").hasRole("TUDOR")
         	.antMatchers("/user/add_user").hasRole("ADMIN")
         	
@@ -78,6 +78,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         	//.antMatchers("/users/**").hasRole("ADMIN")
         	//.antMatchers("/users").hasRole("ADMIN")
         	.antMatchers("/users","/users/**","/user/**").permitAll()
+        	.antMatchers("/ugyfel","/ugyfel/**","/ugyfel/**").permitAll()
         	
 //            .antMatchers(HttpMethod.GET,"/","/extjs/**").permitAll()
 //            .antMatchers(HttpMethod.GET,"/beteg/self").hasRole("BETEG")
