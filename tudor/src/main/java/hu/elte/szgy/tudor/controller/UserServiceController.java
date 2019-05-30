@@ -85,17 +85,19 @@ public class UserServiceController {
 	}
 	
 	
+	/*
 	@GetMapping("/self")
 	public User selfUser() {
 		//return printUser(u);
 		return userService.self();
 	}
 	
-	@GetMapping("/{username}")
+	@GetMapping("/{username}") // conflicts with user/add_user template !?
 	public User otherUser(@PathVariable("username") String username) {
 		//return printUser(u);
 		return userService.otherUser(username);
 	}
+	*/
 	
 	
 	/*

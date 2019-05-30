@@ -70,6 +70,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         	.antMatchers("/admin_home").hasRole("ADMIN")
         	.antMatchers("/user/admin_home").hasRole("ADMIN")
         	.antMatchers("/ugyfel_home").hasRole("UGYFEL")
+        	.antMatchers("/ugyfel/kerdes/uj").hasRole("UGYFEL")
         	.antMatchers("/tudor_home").hasRole("TUDOR")
         	.antMatchers("/user/add_user").hasRole("ADMIN")
         	
