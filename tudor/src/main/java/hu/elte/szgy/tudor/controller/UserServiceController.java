@@ -59,7 +59,8 @@ public class UserServiceController {
 	}
 	
 	//@PostMapping("/new")
-	@RequestMapping(value = "/users", method = RequestMethod.POST)
+	//@RequestMapping(value = "/users", method = RequestMethod.POST)
+	@RequestMapping(value = "/new", method = RequestMethod.POST)
 	//public ResponseEntity<Object> createUser(@RequestBody(required = false) User u, Authentication a) {
 	public ResponseEntity<Void> createUser(@RequestBody(required = false) User u) {
 		//userService.createUser(u, a);
@@ -75,6 +76,27 @@ public class UserServiceController {
 		//return new ResponseEntity<Void>(HttpStatus.ACCEPTED);
 		return userService.deleteUser(userid);
 	}
+	
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	//public ResponseEntity<Void> updateUser(@PathVariable("userid") String userid) {
+	public ResponseEntity<Void> updateUser(@RequestBody(required = false) User u) {
+		//return userService.updateUser(userid);
+		return userService.updateUser(u);
+	}
+	
+	
+	@GetMapping("/self")
+	public User selfUser() {
+		//return printUser(u);
+		return userService.self();
+	}
+	
+	@GetMapping("/{username}")
+	public User otherUser(@PathVariable("username") String username) {
+		//return printUser(u);
+		return userService.otherUser(username);
+	}
+	
 	
 	/*
 	//@RequestMapping("/add_user", method = RequestMethod.GET)

@@ -41,21 +41,30 @@ public class Kerdes implements Serializable {
 	@JsonIgnore
 	private Set<Szolgaltatas> szolgaltatasok = new HashSet<Szolgaltatas>(0);
 	
+	/*
 	public enum Statusz{ NYITOTT, LEZART }
-	
 	public enum ZarStat{ MEGVALASZOLVA, TOROLVE }
+	*/
 	
+	/*
 	@Enumerated(EnumType.ORDINAL)
 	private Statusz statusz;
+	*/
 	
 	private String kerdes;
+	
 	private String valasz;
 	private int valaszstat;
+	
+	/*
 	private Date nyitdate;
 	private Date zardate;
+	*/
 	
+	/*
 	@Enumerated(EnumType.ORDINAL)
 	private ZarStat zarStat;
+	*/
 	
 	public int getKerdesid() { return this.kerdesid; }
 	public void setKerdesid(int kerdesid) { this.kerdesid = kerdesid; }
@@ -63,8 +72,10 @@ public class Kerdes implements Serializable {
 	public Ugyfel getUgyfel() { return this.ugyfel; }
 	public void setUgyfel(Ugyfel ugyfel) { this.ugyfel = ugyfel; }
 	
+	/*
 	public Statusz getStatusz() { return this.getStatusz(); }
 	public void setStatusz(Statusz statusz) { this.statusz = statusz; }
+	*/
 	
 	public String getKerdes() { return this.kerdes; }
 	public void setKerdes(String kerdes) { this.kerdes = kerdes; }
@@ -75,14 +86,17 @@ public class Kerdes implements Serializable {
 	public int getValaszstat() { return this.valaszstat; }
 	public void setValaszstat(int valaszstat) { this.valaszstat = valaszstat; }
 	
+	/*
 	public Date getNyitdate() { return this.nyitdate; }
     public void setNyitdate(Date nyitdate) { this.nyitdate = nyitdate; }
-    
     public Date getZardate() { return this.zardate; }
     public void setZardate(Date zardate) { this.zardate = zardate; }
-    
+    */
+	
+    /*
     public ZarStat getZarStat() { return this.zarStat; }
     public void setZarStat(ZarStat zarStat) { this.zarStat = zarStat; }
+    */
     
     public Set<Szolgaltatas> getSzolgaltatasok() { return this.szolgaltatasok; }
     public void setKezelesek(Set<Szolgaltatas> szolgaltatasok) { this.szolgaltatasok = szolgaltatasok; }

@@ -96,6 +96,43 @@ public class UserServiceImpl {
 	}
 	
 	
+	public ResponseEntity<Void> updateUser(User u1) {
+		//userDao.update(u);
+		System.out.println("updating:"+u1.getUsername()+","+u1.getPassword()+","+u1.getType());
+		
+		User u2 = userDao.getOne(u1.getUsername());
+		if (!u1.getPassword().isEmpty() ) {
+			u2.setPassword(u1.getPassword());
+		}
+		/*if (!u1.getType().equals(null)) {
+			u2.setType(u1.getType());
+		}*/
+		//userDao.save(u2);
+		
+		return new ResponseEntity<Void>(HttpStatus.ACCEPTED);
+	
+	}
+	
+	public User self() {
+		SecurityContext cc = SecurityContextHolder.getContext();
+		HttpHeaders headers = new HttpHeaders();
+		if (cc.getAuthentication() != null) {
+			Authentication a = cc.getAuthentication();
+			System.out.println("Name: "+a.getName());
+			User u = userDao.getOne(a.getName());
+			return u;
+		}
+		return null;
+	}
+	
+	public User otherUser(String username) {
+		User u = userDao.getOne(username);
+		/*if (u.getType() != UserType.UGYFEL) {
+			throw new AccessDeniedException("No access to User: " + username);
+		}*/
+		return u;
+	}
+	
 
 	public RedirectView dispatchUser() {
 		SecurityContext cc = SecurityContextHolder.getContext();

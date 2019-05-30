@@ -6,17 +6,17 @@
     
     <head>
         <meta charset="utf-8" />
-        <title>TudorApp - ADMIN felület</title>
+        <title>TudorApp - Ä‚Ĺ›GYFÄ‚â€°L felÄ‚Ä˝let</title>
         <link rel="stylesheet" type="text/css" src="css/styles.css" />
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
         <script>
         $(document).ready(function(){
-            $.getJSON("http://localhost:9090/user/users", function(result){
+            $.getJSON("http://localhost:9090/ugyfel/kerdes/kerdesek", function(result){
                 $.each(result, function(key,value) {
                     //$("#usersJson").append("<tr><td>"+value.userid+"</td><td>"+value.username+"</td><td>"+value.password+"</td><td>"+value.type+"</td></tr>");
-                    $("#usersJson").append("<tr><td>"+value.username+"</td><td>"+value.password+"</td><td>"+value.type+"</td></tr>");
+                    $("#kerdesekJson").append("<tr><td>"+value.username+"</td><td>"+value.password+"</td><td>"+value.type+"</td></tr>");
                 }); 
             });
         });
@@ -39,7 +39,7 @@
                var requestJSON = JSON.stringify(usermodel);
                $.ajax({
                   type : "POST",
-                  url : "http://localhost:9090/user/new",
+                  url : "http://localhost:9090/ugyfel/kerdes/uj",
                   //url : "http://localhost:9090/user/users",
                   headers : {
                      "Content-Type" : "application/json"
@@ -59,13 +59,13 @@
     </head>
 
     <body>
-        TudorApp - Új felhasználó létrehozása
+        TudorApp - Ä‚Ĺˇj kÄ‚Â©rdÄ‚Â©s lÄ‚Â©trehozÄ‚Ë‡sa
         <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
         
 
-        <!-- <div id="usersJson"> </div> -->
+        <!-- <div id="kerdesekJson"> </div> -->
         
-        <table id="usersJson">
+        <table id="kerdesekJson">
             <tr>
                 <!--<th>Userid</th>-->
                 <th>Username</th>
@@ -74,8 +74,8 @@
             </tr>
         </table>
         
-        <form th:action = "@{/user/new}" method = "post">
-        <!--<form th:action = "@{/user/users}" method = "post">-->
+        <form th:action = "@{/ugyfel/kerdes/uj}" method = "post">
+        <!--<form th:action = "@{/ugyfel/kerdes/kerdesek}" method = "post">-->
             <div>
                 <label> User Name : <input type = "text" id="username"/> </label>
             </div>
@@ -92,7 +92,7 @@
             </div>
         </form>
 
-        <p>Click <a th:href="@{/admin_home}">here</a> to go back to admin home.</p>
+        <p>Click <a th:href="@{/ugyfel_home}">here</a> to go back to ugyfel home.</p>
 
         <form th:action="@{/logout}" method="post">
             <input type="submit" value="Sign Out"/>

@@ -19,6 +19,14 @@
                     $("#usersJson").append("<tr><td>"+value.username+"</td><td>"+value.password+"</td><td>"+value.type+"</td></tr>");
                 }); 
             });
+
+            /*
+            //var myObject = {username : $(#httpServletRequest.getParameter('username')) };
+            $.getJSON("http://localhost:9090/user/"
+                        //, uname : [[${#httpServletRequest.getParameter('uname')}]] 
+                        //, myObject
+                        , function(result) {
+            });*/
         });
         </script>
 
@@ -39,8 +47,9 @@
                var requestJSON = JSON.stringify(usermodel);
                $.ajax({
                   type : "POST",
-                  url : "http://localhost:9090/user/new",
+                  //url : "http://localhost:9090/user/new",
                   //url : "http://localhost:9090/user/users",
+                  url : "http://localhost:9090/user/update",
                   headers : {
                      "Content-Type" : "application/json"
                   },
@@ -59,7 +68,7 @@
     </head>
 
     <body>
-        TudorApp - Új felhasználó létrehozása
+        TudorApp - felhasználó adatainak módosítása
         <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
         
 
@@ -74,16 +83,17 @@
             </tr>
         </table>
         
-        <form th:action = "@{/user/new}" method = "post">
+        <!--<form th:action = "@{/user/new}" method = "post">-->
         <!--<form th:action = "@{/user/users}" method = "post">-->
+            <form th:action = "@{/user/update}" method = "post">
             <div>
-                <label> User Name : <input type = "text" id="username"/> </label>
+                <label> User Name : <input type = "text" id="username" th:value=${#httpServletRequest.getParameter('username')}  disabled /> </label>
             </div>
             <div>
-                <label> Password: <input type = "password" id="password"/> </label>
+                <label> New password: <input type = "password" id="password" /> </label>
             </div>
             <div>
-                <label> User role : <input type = "text" id="type"/> </label>
+                <label> New role : <input type = "text" id="type" /> </label>
             </div>
 
             <div>

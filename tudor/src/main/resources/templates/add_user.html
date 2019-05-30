@@ -39,8 +39,8 @@
                var requestJSON = JSON.stringify(usermodel);
                $.ajax({
                   type : "POST",
-                  //url : "http://localhost:9090/user/new",
-                  url : "http://localhost:9090/user/users",
+                  url : "http://localhost:9090/user/new",
+                  //url : "http://localhost:9090/user/users",
                   headers : {
                      "Content-Type" : "application/json"
                   },
@@ -74,8 +74,8 @@
             </tr>
         </table>
         
-        <!--<form th:action = "@{/user/new}" method = "post">-->
-            <form th:action = "@{/user/users}" method = "post">
+        <form th:action = "@{/user/new}" method = "post">
+        <!--<form th:action = "@{/user/users}" method = "post">-->
             <div>
                 <label> User Name : <input type = "text" id="username"/> </label>
             </div>

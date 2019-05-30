@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -30,6 +31,7 @@ import hu.elte.szgy.tudor.model.Kerdes;
 import hu.elte.szgy.tudor.model.Szolgaltatas;
 import hu.elte.szgy.tudor.model.Tema;
 import hu.elte.szgy.tudor.model.Ugyfel;
+import hu.elte.szgy.tudor.service.UgyfelServiceImpl;
 import hu.elte.szgy.tudor.service.UserDetailsImpl;
 
 @RestController
@@ -38,6 +40,7 @@ import hu.elte.szgy.tudor.service.UserDetailsImpl;
 public class UgyfelServiceController {
 	private static Logger log = LoggerFactory.getLogger(UgyfelServiceController.class);
 
+	/*
 	@Autowired
 	private UgyfelRepository ugyfelRepo;
 	@Autowired
@@ -46,7 +49,24 @@ public class UgyfelServiceController {
 	private SzolgaltatasRepository szolgaltatasRepo;
 	@Autowired
 	private TemaRepository temaRepo;
+	*/
+	
+	@Autowired
+	private UgyfelServiceImpl ugyfelService;
 
+	
+	@RequestMapping(value = "/kerdes/kerdesek")
+	public List<Kerdes> getKerdesek() {
+		//return kerdesRepo.getKerdesek();
+		return ugyfelService.getKerdesek(); 
+	}
+	
+	@RequestMapping(value = "/kerdes/uj", method = RequestMethod.POST)
+	public ResponseEntity<Void> createKerdes(@RequestBody(required = false) Kerdes k) {
+		return ugyfelService.createKerdes(k);
+	}
+	
+	
 	/*
 	int userTudorID(Authentication auth) {
 		return ((UserDetailsImpl)auth.getPrincipal()).getTudorId();
@@ -60,6 +80,7 @@ public class UgyfelServiceController {
 	}
 	*/
 	
+	/*
 	@GetMapping("/{azon}")
     public ResponseEntity<Ugyfel> findUgyfel(@PathVariable("azon") Integer azon, Principal principal, Authentication auth) {
 		Ugyfel b = ugyfelRepo.findById(azon).get();
@@ -102,7 +123,7 @@ public class UgyfelServiceController {
 	}
 	
 	@PostMapping("/save}")
-	public ResponseEntity<Void> saveBeteg(@RequestBody Ugyfel b) { return null; }
+	public ResponseEntity<Void> saveUgyfel(@RequestBody Ugyfel b) { return null; }
 
 	@PostMapping("/kerdes/new")
 	public ResponseEntity<Kerdes> newKerdes(@RequestBody Kerdes e) {
@@ -172,9 +193,9 @@ public class UgyfelServiceController {
 	@PostMapping("/szolgaltatas/{kid}/change_date")
 	public ResponseEntity<Date> setSzolgaltatasDate(@PathVariable("kid") Integer kid, @RequestBody Date d ) { 
 	    Szolgaltatas k = szolgaltatasRepo.getOne(kid);
-	    /*if(k.getStatusz() != Szolgaltatas.Statusz.ELOJEGYZETT) {
-	    	throw new AccessDeniedException("Kezeles is already in progress");
-	    }*/
+	    //if(k.getStatusz() != Szolgaltatas.Statusz.ELOJEGYZETT) {
+	    	//throw new AccessDeniedException("Kezeles is already in progress");
+	    //}
 	    if(d.before(new Date())) {
 	    	throw new AccessDeniedException("Date is in the past");
 	    }
@@ -182,4 +203,5 @@ public class UgyfelServiceController {
 	    szolgaltatasRepo.save(k);
 	    return new ResponseEntity<Date>(k.getNyitdate(), HttpStatus.ACCEPTED);
 	}
+*/
 }

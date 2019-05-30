@@ -107,7 +107,6 @@ public class TemaServiceController {
     }
 
     
-  //itt valami nem okés
     void setTemaRelations(Tema o, Integer vezid) {
 		/*Tema tema;
 		if (vezid != null) {

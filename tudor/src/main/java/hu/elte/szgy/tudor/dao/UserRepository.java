@@ -19,4 +19,5 @@ public interface UserRepository extends JpaRepository<User, String> {
 	//not using a DAO interface here
 	
 	Optional<User> findByUsername(String username);
+
 }
