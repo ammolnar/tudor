@@ -21,8 +21,8 @@
                     //$("#usersJson").append("<tr><td>"+value.userid+"</td><td>"+value.username+"</td><td>"+value.password+"</td><td>"+value.type+"</td><td><a href=\"/user/delete"+"/"+value.userid+"\">delete</a></td></tr>");
                     //$("#usersJson").append("<tr><td>"+value.username+"</td><td>"+value.password+"</td><td>"+value.type+"</td><td><a href=\"/user/delete"+"/"+value.username+"\">delete</a></td></tr>");
                     $("#usersJson").append(
-                        "<tr><td>"+value.username+"</td><td>"+value.password+"</td><td>"+value.type+
-                            "</td><td><a href=\"/ugyefl/kerdes/delete"+"/"+value.username+"\">delete</a></td>"
+                        "<tr><td>"+value.kerdes+"</td><td>"+value.kategoria+"</td><td>"+value.valasz+"</td>"
+                            //+"<td><a href=\"/ugyfel/kerdes/delete"+"/"+value.username+"\">delete</a></td>"
                     );
 
                 }); 
@@ -48,10 +48,10 @@
         
         <table id="kerdesekJson">
             <tr>
-                <!--<th>Userid</th>-->
-                <th>Username</th>
-                <th>Password</th>
-                <th>Type</th>
+                <!--<th>Kerdesid</th>-->
+                <th>Kerdes</th>
+                <th>Kategoria</th>
+                <th>Valasz</th>
             </tr>
         </table>
 

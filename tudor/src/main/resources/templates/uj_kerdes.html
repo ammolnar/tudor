@@ -6,7 +6,7 @@
     
     <head>
         <meta charset="utf-8" />
-        <title>TudorApp - Ä‚Ĺ›GYFÄ‚â€°L felÄ‚Ä˝let</title>
+        <title>TudorApp - Ă„â€šÄąâ€şGYFĂ„â€šĂ˘â‚¬Â°L felĂ„â€šĂ„Ëťlet</title>
         <link rel="stylesheet" type="text/css" src="css/styles.css" />
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -16,7 +16,7 @@
             $.getJSON("http://localhost:9090/ugyfel/kerdes/kerdesek", function(result){
                 $.each(result, function(key,value) {
                     //$("#usersJson").append("<tr><td>"+value.userid+"</td><td>"+value.username+"</td><td>"+value.password+"</td><td>"+value.type+"</td></tr>");
-                    $("#kerdesekJson").append("<tr><td>"+value.username+"</td><td>"+value.password+"</td><td>"+value.type+"</td></tr>");
+                    $("#kerdesekJson").append("<tr><td>"+value.kerdes+"</td><td>"+value.kategoria+"</td><td>"+value.valasz+"</td></tr>");
                 }); 
             });
         });
@@ -27,16 +27,16 @@
         <script>
          $(document).ready(function() {
             $("button").click(function() {
-               var usermodel = {
-                    //userid : null,
-                    username : $("#username").val(), 
-                    password : $("#password").val(),
-                    type : $("#type").val()
+               var kerdesmodel = {
+                    //kerdesid : null,
+                    kerdes : $("#kerdes").val(), 
+                    kategoria : $("#kategoria").val(),
+                    valasz : $("#valasz").val()
                };
                /*alert("username:"+usermodel.username);
                alert("password:"+usermodel.password);
                alert("type:"+usermodel.type);*/
-               var requestJSON = JSON.stringify(usermodel);
+               var requestJSON = JSON.stringify(kerdesmodel);
                $.ajax({
                   type : "POST",
                   url : "http://localhost:9090/ugyfel/kerdes/uj",
@@ -59,7 +59,7 @@
     </head>
 
     <body>
-        TudorApp - Ä‚Ĺˇj kÄ‚Â©rdÄ‚Â©s lÄ‚Â©trehozÄ‚Ë‡sa
+        TudorApp - Ä‚Ĺ›GYFÄ‚â€°L felÄ‚Ä˝let
         <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
         
 
@@ -67,23 +67,23 @@
         
         <table id="kerdesekJson">
             <tr>
-                <!--<th>Userid</th>-->
-                <th>Username</th>
-                <th>Password</th>
-                <th>Type</th>
+                <!--<th>Kerdesid</th>-->
+                <th>Kerdes</th>
+                <th>Kategoria</th>
+                <th>Valasz</th>
             </tr>
         </table>
         
         <form th:action = "@{/ugyfel/kerdes/uj}" method = "post">
         <!--<form th:action = "@{/ugyfel/kerdes/kerdesek}" method = "post">-->
             <div>
-                <label> User Name : <input type = "text" id="username"/> </label>
+                <label> Kerdes : <input type = "text" id="kerdes"/> </label>
             </div>
             <div>
-                <label> Password: <input type = "password" id="password"/> </label>
+                <label> Kategoria : <input type = "text" id="kategoria"/> </label>
             </div>
             <div>
-                <label> User role : <input type = "text" id="type"/> </label>
+                <label> Valasz : <input type = "text" id="valasz"/> </label>
             </div>
 
             <div>

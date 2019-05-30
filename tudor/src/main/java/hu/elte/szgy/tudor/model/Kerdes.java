@@ -52,6 +52,7 @@ public class Kerdes implements Serializable {
 	*/
 	
 	private String kerdes;
+	private String kategoria;
 	private String valasz;
 	
 	//private int valaszstat;
@@ -79,6 +80,9 @@ public class Kerdes implements Serializable {
 	
 	public String getKerdes() { return this.kerdes; }
 	public void setKerdes(String kerdes) { this.kerdes = kerdes; }
+	
+	public String getKategoria() { return this.kategoria; }
+	public void setKategoria(String kategoria) { this.kategoria = kategoria; }
 	
 	public String getValasz() { return this.valasz; }
 	public void setValasz(String valasz) { this.valasz = valasz; }
