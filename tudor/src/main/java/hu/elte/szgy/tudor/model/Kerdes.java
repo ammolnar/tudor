@@ -29,6 +29,7 @@ public class Kerdes implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int kerdesid;
 	
+	/*
 	@ManyToOne
 	@JoinColumn(name="fk_azon", nullable = false)
 	@JsonIgnore
@@ -36,6 +37,7 @@ public class Kerdes implements Serializable {
 	
 	@Column(name = "fk_azon", insertable = false, updatable = false)
 	private int ugyfelAzon;
+	*/
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "kerdes")
 	@JsonIgnore
@@ -70,8 +72,10 @@ public class Kerdes implements Serializable {
 	public int getKerdesid() { return this.kerdesid; }
 	public void setKerdesid(int kerdesid) { this.kerdesid = kerdesid; }
 	
+	/*
 	public Ugyfel getUgyfel() { return this.ugyfel; }
 	public void setUgyfel(Ugyfel ugyfel) { this.ugyfel = ugyfel; }
+	*/
 	
 	/*
 	public Statusz getStatusz() { return this.getStatusz(); }
@@ -107,9 +111,11 @@ public class Kerdes implements Serializable {
     public Set<Szolgaltatas> getSzolgaltatasok() { return this.szolgaltatasok; }
     public void setKezelesek(Set<Szolgaltatas> szolgaltatasok) { this.szolgaltatasok = szolgaltatasok; }
 
+    /*
     public int getUgyfelAzon()	{ return ugyfelAzon; }
 	public void setUgyfelAzon(int ugyfelAzon) { this.ugyfelAzon = ugyfelAzon; }
-	
+	*/
+    
 	public Kerdes() { }
     public Kerdes(Integer nid) { kerdesid = nid; }
 
